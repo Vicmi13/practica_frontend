@@ -12,24 +12,59 @@ var gulp = require("gulp"),
     autoprefixer = require ('autoprefixer'),
     cssnano = require('cssnano');
 
-    //Tarea de  gulp por defecto     
-    gulp.task('default', ['sass', 'html', 'js'], function(){
+     
+//Bootstrap scss source
+var bootstrapSass = {
+        in: './node_modules/bootstrap-sass/'
+};
+
+var fonts = {
+        in: ['src/fonts/*.*', bootstrapSass.in + 'assets/fonts/**/*'],
+        out: 'dist/fonts/'
+};
+ 
+// Our scss source folder: .scss files
+var scss = {
+    in: 'src/scss/style.scss',
+    out: 'dist/',
+    watch: 'src/scss/**/*',
+    sassOpts: {
+        outputStyle: 'nested',
+        precison: 3,
+        errLogToConsole: true,
+        includePaths: [bootstrapSass.in + 'assets/stylesheets']
+    }
+};
+
+var jsBootstrap = {
+    in: 'src/js/main.js',
+    out: '/dist',
+    jsOpts :{
+        outputStyle: 'nested',
+        precison: 3,
+        errLogToConsole: true,
+        includePaths: [bootstrapSass.in + 'assets/javascripts'],
+    }
+}
+
+
+
+   
+    gulp.task('default', ['sass', 'html', 'js', 'materialDesign'], function(){
         browserSync.init({proxy : 'http://127.0.0.1:3100/'});
-
-
-        gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"]);
-      
+        gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"]);    
         gulp.watch(["src/*.html", "src/**/*.html"], ['html']); 
-
-           
         gulp.watch(["src/js/*.js", "src/js/**/*.js" ], ["js"])
+        gulp.watch(["src/**/*.html"], ["materialDesign"]);
 })
 
 
-//Compila el archvivo SASS
-gulp.task('sass', function(){
-        gulp.src('src/scss/style.scss')
+    //Compila el archvivo SASS  -> [] Ejecuta esta primero
+    gulp.task('sass', ['fonts'], function(){
+         gulp.src('src/scss/style.scss')
         .pipe(sourcemaps.init())
+        .pipe(sass(scss.sassOpts))
+
         .pipe(sass().on('error', function (error){
             return notify().write(error);
         }))
@@ -72,4 +107,18 @@ gulp.task('sass', function(){
         .pipe(notify("JS compilado"));
 
     })
+
+    gulp.task('materialDesign', function(){
+        gulp.src(['node_modules/material-design-lite/material.min.css', 'node_modules/material-design-lite/material.min.js'])
+        .pipe(gulp.dest("dist/")) 
+        .pipe(notify("Material Design"));
+    })
+
+    // copy bootstrap required fonts to dest
+    gulp.task('fonts', function () {
+    return gulp
+        .src(fonts.in)
+        .pipe(gulp.dest(fonts.out))
+        .pipe(notify("Bootstrap running"));
+    });
 
