@@ -27,7 +27,6 @@ var fonts = {
 var scss = {
     in: 'src/scss/style.scss',
     out: 'dist/',
-    watch: 'src/scss/**/*',
     sassOpts: {
         outputStyle: 'nested',
         precison: 3,
@@ -48,8 +47,6 @@ var jsBootstrap = {
 }
 
 
-
-   
     gulp.task('default', ['sass', 'html', 'js', 'materialDesign'], function(){
         browserSync.init({proxy : 'http://127.0.0.1:3100/'});
         gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"]);    
@@ -90,15 +87,15 @@ var jsBootstrap = {
     //Compila y genera un sólo archivo JS
     gulp.task('js', function (){
         gulp.src('src/js/main.js')
-        // .pipe(tap(function (file){
-        //     file.contents = browserify(file.path, {debug: true})
-        //                    // .transform('babelify', {presets: ['es:2015']})
-        //                     .bundle()     //Se compila el archivo
-        //                     .on('error', function(error){
-        //                         return notify().write(error);
-        //                     })
-        // }))
-        .pipe(buffer())                 //Se pasa a buffer para que pueda ejecutarse el sigueinte pipe
+       /*.pipe(tap(function (file){
+             file.contents = browserify(file.path, {debug: true})
+                             .transform('babelify', {presets: ['es:2015']})
+                             .bundle()     //Se compila el archivo
+                             .on('error', function(error){
+                                 return notify().write(error);
+                             })
+         }))
+        .pipe(buffer())                 //Se pasa a buffer para que pueda ejecutarse el sigueinte pipe */
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())                 //Se minifica el JS
         .pipe(sourcemaps.write('./'))   //y los guarda en el mismo directorio que el archivo fuente
@@ -108,10 +105,13 @@ var jsBootstrap = {
 
     })
 
+
+
+    
+
     gulp.task('materialDesign', function(){
         gulp.src(['node_modules/material-design-lite/material.min.css', 'node_modules/material-design-lite/material.min.js'])
-        .pipe(gulp.dest("dist/")) 
-        .pipe(notify("Material Design"));
+        .pipe(gulp.dest("dist/"));
     })
 
     // copy bootstrap required fonts to dest
