@@ -31,7 +31,7 @@ var scss = {
         outputStyle: 'nested',
         precison: 3,
         errLogToConsole: true,
-        includePaths: [bootstrapSass.in + 'assets/stylesheets']
+         includePaths: [bootstrapSass.in + 'assets/stylesheets']
     }
 };
 
@@ -47,10 +47,10 @@ var jsBootstrap = {
 }
 
 
-    gulp.task('default', ['sass', 'html', 'js', 'materialDesign'], function(){
+    gulp.task('default', ['html', 'sass', 'js', 'materialDesign'], function(){
         browserSync.init({proxy : 'http://127.0.0.1:3100/'});
-        gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"]);    
-        gulp.watch(["src/*.html", "src/**/*.html"], ['html']); 
+        gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"])    
+        gulp.watch(["src/*.html", "src/**/*.html"], ['html']);  
         gulp.watch(["src/js/*.js", "src/js/**/*.js" ], ["js"])
         gulp.watch(["src/**/*.html"], ["materialDesign"]);
 })
@@ -58,9 +58,10 @@ var jsBootstrap = {
 
     //Compila el archvivo SASS  -> [] Ejecuta esta primero
     gulp.task('sass', ['fonts'], function(){
-         gulp.src('src/scss/style.scss')
-        .pipe(sourcemaps.init())
+         gulp.src('src/scss/main.scss')
         .pipe(sass(scss.sassOpts))
+        .pipe(sourcemaps.init())
+        
 
         .pipe(sass().on('error', function (error){
             return notify().write(error);
@@ -87,15 +88,17 @@ var jsBootstrap = {
     //Compila y genera un sólo archivo JS
     gulp.task('js', function (){
         gulp.src('src/js/main.js')
-       /*.pipe(tap(function (file){
-             file.contents = browserify(file.path, {debug: true})
-                             .transform('babelify', {presets: ['es:2015']})
-                             .bundle()     //Se compila el archivo
-                             .on('error', function(error){
-                                 return notify().write(error);
-                             })
-         }))
-        .pipe(buffer())                 //Se pasa a buffer para que pueda ejecutarse el sigueinte pipe */
+        .pipe(tap(function(file) { //tap nos permite ejecutar una funcion por cada fichero relacionado en gulp.src
+            //reemplazamos el contenido del fichero (main.js) por lo que nos devuelve browserify pasandole el fichero
+            file.contents = browserify(file.path, {debug: true}) //creamos una instancia de browserify en base al archivo
+                            .transform('babelify', {presets : ["es2015"]}) //traduce el codigo de ES6 -> ES5
+                            .bundle() //Compilamos  el archivo
+                            .on("error", function(error){
+                                return notify().write(error);
+                            })
+
+        }))
+        .pipe(buffer())                 //Se pasa a buffer para que pueda ejecutarse el sigueinte pipe 
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())                 //Se minifica el JS
         .pipe(sourcemaps.write('./'))   //y los guarda en el mismo directorio que el archivo fuente
@@ -114,11 +117,11 @@ var jsBootstrap = {
         .pipe(gulp.dest("dist/"));
     })
 
+    
     // copy bootstrap required fonts to dest
     gulp.task('fonts', function () {
     return gulp
         .src(fonts.in)
-        .pipe(gulp.dest(fonts.out))
-        .pipe(notify("Bootstrap running"));
+        .pipe(gulp.dest(fonts.out));
     });
 

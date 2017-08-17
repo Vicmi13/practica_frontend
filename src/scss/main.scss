@@ -1,14 +1,19 @@
-
-@import url("https://fonts.googleapis.com/css?family=Fjalla+One|Mada|Yanone+Kaffeesatz");
-@import "global-variables";
-@import "reset";
-@import "tagsGrales-html";
-
 //Componentes Bootstrap
 @import "bootstrap";
 @import "bootstrap/theme";
 
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One|Mada|Yanone+Kaffeesatz");
+@import "global-variables";
+@import "reset";
+@import "tagsGrales";
+
 
 //Componentes de las diferentes elems de la página
+
 @import "components/header-main";
+
+
+
+
+
 
