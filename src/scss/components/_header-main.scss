@@ -28,15 +28,13 @@
     width: auto;  
 }
 .mdl-chip--contact:hover{
-   background-color: $plankton;  
+   background-color: $yellow-color-text;  
 }
 
 
 .navbar{
-    background-color:gray; 
     width: 100%;
-    position: fixed;
-    top: 0;
+    top: 10px;
     opacity: 0.4;
 
 }
@@ -46,20 +44,16 @@
     list-style-type: none;
 }
 
+
 .navbar >  .navbar-list > .navbar-url{
-    display: inline-block;
+    
+   font-size: $font-size-large;
+   color: $red-color;
 }
 
 
-
-.navbar > .navbar-list > .navbar-url.active a{
-      color:rgb(0.0, 0.0,0.9);   
-      background-color: #a3c2c2;
-      font-size: 20px;
-}
-
-.navbar >  .navbar-list > .navbar-url:hover{
-  background-color: #a3c2c2;
-   font-size: 20px;
-   color: black;
+.navbar >  .navbar-list > .navbar-url > a:hover{
+   background-color: $accent-color;
+   font-size: $font-size-large + 5px;
+   color: $red-color;
 }
