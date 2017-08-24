@@ -1,15 +1,18 @@
+@import "reset";
+
 //Componentes Bootstrap
 @import "bootstrap";
 @import "bootstrap/theme";
 
 @import url("https://fonts.googleapis.com/css?family=Fjalla+One|Mada|Anton|Yanone+Kaffeesatz");
 @import "global-variables";
-@import "reset";
 @import "tagsGrales";
 
 
 //Componentes de las diferentes elems de la página
 @import "components/header-main";
+@import "components/grid-articulos.scss";
+@import "components/footer-main.scss";
 
 
 
