@@ -6,8 +6,9 @@ const $ =require("jquery");
 
     //Script para esconder header
     function toggleMobileMenu() {
-        var $mobileMenu = $('#mobile-main-menu');   
+         var $mobileMenu = $('#mobile-main-menu');   
          $mobileMenu.slideToggle('fast');
+     
      };
 
      $(document).ready(function() {
