@@ -1,13 +1,23 @@
 .demo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
+  width: 500px;
+  height: 350px;
+   width: 100%;
 }
+
 .demo-card-square > .mdl-card__title {
   color: #fff;
   
 }
 
-.grid-left{
-align-content: right;
+.articulo-card{
+    padding-bottom: 80px;
 }
 
+#icon-image-avatar{
+    height: 57px;
+    width: 70px;
+}
+
+.mdl-list__item-avatar, .material-icons{
+    font-size: 60px;
+}
