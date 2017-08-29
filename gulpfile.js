@@ -51,7 +51,7 @@ var jsBootstrap = {
 }
 
 
-    gulp.task('default', ['html', 'sass', 'js', 'make-bootstrap-js', 'materialDesign'], function(){
+    gulp.task('default', ['html', 'sass', 'js', 'make-bootstrap-js', 'images', 'materialDesign'], function(){
         browserSync.init({proxy : 'http://127.0.0.1:3100/'});
         gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"])    
         gulp.watch(["src/*.html", "src/**/*.html"], ['html']);  
@@ -119,7 +119,7 @@ var jsBootstrap = {
 
     gulp.task('materialDesign', function(){
         gulp.src(['node_modules/material-design-lite/material.min.css', 'node_modules/material-design-lite/material.min.js'])
-        .pipe(gulp.dest("dist/"))
+        .pipe(gulp.dest("dist/bootstrap/mdl/"))
     })
 
     
@@ -142,4 +142,13 @@ var jsBootstrap = {
         .pipe(notify("JS Boostrap done by bootConfig"))
         // It will create `bootstrap.js` in directory `assets`. 
     });
+
+    //images
+    gulp.task('images', function(){
+        gulp.src(['src/imgs/*.jpg', 'src/imgs/*.jpeg', 'src/imgs/*.png'])
+        .pipe(gulp.dest('dist/imgs'))
+        .pipe(browserSync.stream())
+        .pipe(notify('imagenes importadas'))
+        
+    })
     
