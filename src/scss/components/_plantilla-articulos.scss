@@ -5,35 +5,14 @@
 	background-size: cover;
 }
 
-section {
-	margin: 20px 0;
-}
-
-.detail h2,
-.detail h3,
-.detail h4 {
-	color: #333;
-	font-weight: 300;
-}
-
-.detail h2 {
+.text-image {
 	color: #fff;
-	font-size: 22px;
-	font-size: 2.2rem;
-	
 }
 
-.detail h3 {
-	font-size: 22px;
-	font-size: 2.2rem;
-}
 
-.detail h4 {
+.formador > h4{
 	margin-bottom: 10px;
-	color: #1f1f1f;
-	font-size: 16px;
-	font-size: 1.6rem;
-	font-weight: 600;
+	color: $red-color;
 }
 
 .detail dt {
@@ -51,8 +30,7 @@ section {
 
 #intro h3 {
 	margin: 0 0 20px 0;
-	font-size: 26px;
-	font-size: 2.6rem;
+	
 }
 
 .trainer {
@@ -90,12 +68,12 @@ section {
 
 	#registration-badge > .price {
 		float: left;
-		width: 50%;
-		margin: 0;
+		//width: 50%;
+		margin: 20px;
 		
 		color: #666;
-		font-size: 60px;
-		font-size: 6rem;
+		font-size: 30px;
+		
 		font-weight: 200;
 		text-align: right;
 	}
@@ -125,13 +103,12 @@ section {
 		font-weight: 600;
 		text-align: center;
 		text-decoration: none;
-
-		background-color: #A3D900;
+		background-color: $red-life;
 	}
 
 	#registration-badge > .do-register:hover {
 		text-decoration: none;
-		background-color: #7CA600;
+		background-color: $red-color-dark;
 	}
 
 #table-of-contents {
@@ -167,26 +144,6 @@ section {
 	font-weight: 200;
 }
 
-#location-info {
-	position: relative;
-	height: 300;
-	margin-top: 0;
-}
-
-#map-canvas {
-	left: 0;
-	top: 0;
-	position: absolute;
-	width: 100%;
-	height: 300px;
-}
-
-#hotel-info {
-	background-color: rgb(255, 255, 255);
-	background-color: rgba(255, 255, 255, 0.65);
-	/* For IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-}
 
 #faq h4 {
 	color:#444;
@@ -232,17 +189,7 @@ section {
 	#location-info {
 		position: relative;
 		height: 300px;
-	}
-
-	#map-canvas {
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-
-	#hotel-info {
-		height: 300px;
-	}
+    }
 }
 
 @media (min-width: 992px) {
