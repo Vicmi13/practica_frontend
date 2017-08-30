@@ -14,3 +14,14 @@ body{
     margin: 0 auto;
 }
 
+
+input{
+    margin: 5px 0 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $forgotten;
+    font-size: $font-size-base;
+    &:focus{
+        outline-color: $pink-color-light;
+    }
+}

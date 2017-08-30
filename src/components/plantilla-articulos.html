@@ -13,7 +13,7 @@
 				<div class="col-xs-7">
 					<section id="intro">
 						<h3>En este workshop aprenderás...</h3>
-						<p>En este workshop de 40 horas de duración de Victor Torres 
+						<p>En este workshop de 8 horas de duración de Victor Torres 
 						   te mostrará como optimizar tú flujo de trabajo con Angular 4 y todos 
 						   sus nuevos componentes a la hora de realizar el front-end de un proyecto web. 
                             Aprenderás muchas cosas.  </p>
@@ -34,7 +34,7 @@
 									Formador en Udemy
 								</p>
 								<a href="#" class="trainer-link">CV online</a>
-								<a href="#" class="trainer-link">@qmarcos</a>
+								<p><span>Github: <a href="#" class="trainer-link">@Vicmi13</a></span></p>
 							</div>
 						</div>
 						<br>
@@ -61,7 +61,7 @@
 					</section>
 					<section id="agenda">
 						<h3>Agenda</h3>
-						<h4><span>W21</span> Sábado 15 de Junio</h4>
+						<h4><span>W21</span> Sábado 9 de Septiembre</h4>
 						<dl class="dl-horizontal">
 							<dt>10:00 hrs </dt>
 							<dd>Workshop parte 1</dd>
@@ -88,27 +88,13 @@
 					<div class="col-xs-12">
 						<h3>Índice de contenidos</h3>
 						<div class="col-xs-4">
-							<h4>1. Frameworks Front-end</h4>
+							<h4>1. Angular 4</h4>
 							<ul>
 								<li>Item indice 1</li>
 								<li>Item indice 2</li>
 								<li>Item indice 3 </li>
 							</ul>
-							<h4>2. Frameworks mas importantes</h4>
-							<ul>
-								<li>Item indice 1</li>
-								<li>Item indice 2</li>
-								<li>Item indice 3 </li>
-							</ul>
-						</div>
-						<div class="col-xs-4">
-							<h4>1. Frameworks en IOS</h4>
-							<ul>
-								<li>Item indice 1</li>
-								<li>Item indice 2</li>
-								<li>Item indice 3 </li>
-							</ul>
-							<h4>2. Frameworks en Android</h4>
+							<h4>4. Domina typescript</h4>
 							<ul>
 								<li>Item indice 1</li>
 								<li>Item indice 2</li>
@@ -116,7 +102,21 @@
 							</ul>
 						</div>
 						<div class="col-xs-4">
-							<h4>1. Frameworks deseables a manipular</h4>
+							<h4>2. Servicios, HTTP</h4>
+							<ul>
+								<li>Item indice 1</li>
+								<li>Item indice 2</li>
+								<li>Item indice 3 </li>
+							</ul>
+							<h4>5. Routing y Nav</h4>
+							<ul>
+								<li>Item indice 1</li>
+								<li>Item indice 2</li>
+								<li>Item indice 3 </li>
+							</ul>
+						</div>
+						<div class="col-xs-4">
+							<h4>3. Ng template</h4>
 							<ul>
 								<li>Item indice 1</li>
 								<li>Item indice 2</li>
@@ -173,20 +173,32 @@
                     <h4>Deja un comentario</h4>
                       <form name="form-contacto" method="get" novalidate>
                                 <div class="col-xs-12">
-                                    <label for="nombre">Nombre: </label>
-                                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-
-                                    <label for="apellidos">Apellidos: </label>
-                                    <input type="text" id="apellidos" name="apellidos" placeholder="apellidos">
-                                    <br> <br>
-                                     <label for="email">Email:</label>
-                                    <input type="email" id="email" name="email" placeholder="name@company.com"
-                                    pattern="[A-Za-z0-9\.\+]+@[A-Za-z0-9]+\.[A-Za-z0-9\.]+"
-                                     required><br>  
-                                    <textarea name="comentarios" rows="10" cols="40"></textarea>    
+								
+									<label for="nombre">Nombre:</label>
+									<div class="mdl-textfield mdl-js-textfield">
+										<input class="mdl-textfield__input" type="text" id="sample1">
+										<label class="mdl-textfield__label" for="sample1">Nombre...</label>
+									</div>
+									<br>
+                                   <label for="nombre">Apellidos:</label>
+									<div class="mdl-textfield mdl-js-textfield">
+										<input class="mdl-textfield__input" type="text" id="sample1">
+										<label class="mdl-textfield__label" for="sample1">Apellidos...</label>
+									</div>
+                                    <br>
+									 <label for="email">Email:</label>
+									 <div class="mdl-textfield mdl-js-textfield">
+										<input class="mdl-textfield__input" type="email" id="sample1"  
+											pattern="[A-Za-z0-9\.\+]+@[A-Za-z0-9]+\.[A-Za-z0-9\.]+">
+										<label class="mdl-textfield__label" for="sample1">name@company.com</label>
+									</div>
+									<br>
+                                    <textarea name="comentarios" rows="10" cols="80"></textarea>    
                                 </div> 
-                                <button type="">Save song</button> 
-                       </form>     
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+									Guardar
+								</button 
+					   </form>   
                 </div>
             </div>
         <section>

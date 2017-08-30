@@ -10,6 +10,10 @@
 }
 
 
+.formador{
+	margin-left: 5px;
+}
+
 .formador > h4{
 	margin-bottom: 10px;
 	color: $red-color;
@@ -47,8 +51,7 @@
 }
 
 #trainer-list p {
-	font-size: 15px;
-	font-size: 1.5rem;
+	
 	line-height: 18px;
 	line-height: 1.8rem;
 }
@@ -123,9 +126,7 @@
 
 #table-of-contents h4 {
 	margin: 0;
-	color: #444;
-	font-size: 14px;
-	font-size: 1.4rem;
+	color: $red-color;;
 	font-weight: 400;
 	text-transform: uppercase;
 }
@@ -146,15 +147,14 @@
 
 
 #faq h4 {
-	color:#444;
+	color:$biskuit;
 	font-weight: 700;
 }
 
 #faq p {
-	font-size: 15px;
-	font-size: 1.5rem;
 	line-height: 18px;
 	line-height: 1.8rem;
+	font-weight: 400;
 }
 
 /* Small devices (tablets, 768px and up) */
