@@ -53,9 +53,9 @@ var jsBootstrap = {
 
     gulp.task('default', ['html', 'sass', 'js', 'make-bootstrap-js', 'images', 'materialDesign'], function(){
         browserSync.init({proxy : 'http://127.0.0.1:3100/'});
-        gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"])    
+        gulp.watch(["src/scss/*.scss", "src/scss/**/*.scss"], ["sass"]);    
         gulp.watch(["src/*.html", "src/**/*.html"], ['html']);  
-        gulp.watch(["src/js/*.js", "src/js/**/*.js" ], ["js"])
+        gulp.watch(["src/js/*.js", "src/js/**/*.js" ], ["js"]);
         gulp.watch(["src/**/*.html"], ["materialDesign"]);
 })
 
@@ -91,7 +91,7 @@ var jsBootstrap = {
         .pipe(browserSync.stream())     //rearga el csss del navegador
         .pipe(notify('SASS compilado')) 
     })
-
+    /*
     //Compila y genera un sólo archivo JS
     gulp.task('js',  function (){
         gulp.src('src/js/main.js')
@@ -115,6 +115,34 @@ var jsBootstrap = {
         .pipe(notify("JS compilado"))
 
     })
+    */
+
+
+//compilar y generar un único JS
+gulp.task('js', function(){
+    gulp.src('src/js/main.js')
+        .pipe(tap(function(file) { //tap nos permite ejecutar una funcion por cada fichero relacionado en gulp.src
+            //reemplazamos el contenido del fichero (main.js) por lo que nos devuelve browserify pasandole el fichero
+            file.contents = browserify(file.path, {debug: true}) //creamos una instancia de browserify en base al archivo
+                            .transform('babelify', {presets : ["es2015"]}) //traduce el codigo de ES6 -> ES5
+                            .bundle() //Compilamos  el archivo
+                            .on("error", function(error){
+                                return notify().write(error);
+                            })
+
+        }))
+        .pipe(buffer()) //convertimos a buffer para que funcione el sigueinte pipe
+        .pipe(sourcemaps.init({loadMaps: true})) //captura los source maps del fichero de origen
+        .pipe(uglify()) //Minificamos el JS
+        .pipe(sourcemaps.write('./')) //y los guarda en el mismo directorio que el archivo fuente
+        .pipe(gulp.dest("dist/")) //lo guardamos en la carpeta dist
+        .pipe(browserSync.stream()) //recargamos el navegador
+        .pipe(notify("JS compilado"));
+})
+
+
+    
+    
 
 
     gulp.task('materialDesign', function(){
