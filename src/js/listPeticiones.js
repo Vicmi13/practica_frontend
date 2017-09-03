@@ -1,6 +1,6 @@
 const $ = require('jquery');
  
-export default class listService{
+export default class listPeticiones{
 
     constructor(url){
         this.url = url;

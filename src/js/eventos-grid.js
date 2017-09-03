@@ -1,5 +1,5 @@
 const $ =require("jquery");
-document.write(console.log('Entrando a eventos.js'));
+console.log('Entrando a eventos.js');
 
 export default class Eventosgrid{
     constructor(classSelector){

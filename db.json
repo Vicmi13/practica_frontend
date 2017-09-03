@@ -1,19 +1,16 @@
 {
-  "posts": [
+  "comentarios": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "nombre": "Victor",
+      "apellidos": "Torres Valencia",
+      "comentarios": "Muy buen aporte"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "nombre": "Pamela",
+      "apellidos": "Kalei Ojeda",
+      "comentarios": "Muy buen aporte de Angular 4, sigue así"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
