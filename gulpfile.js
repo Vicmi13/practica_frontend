@@ -57,7 +57,7 @@ var jsBootstrap = {
         gulp.watch(["src/*.html", "src/**/*.html"], ['html']);  
         gulp.watch(["src/js/*.js", "src/js/**/*.js" ], ["js"]);
         gulp.watch(["src/**/*.html"], ["materialDesign"]);
-})
+    })
 
 
 
@@ -77,8 +77,6 @@ var jsBootstrap = {
          gulp.src('src/scss/main.scss')
         .pipe(sass(scss.sassOpts))
         .pipe(sourcemaps.init())
-        
-
         .pipe(sass().on('error', function (error){
             return notify().write(error);
         }))
@@ -91,59 +89,31 @@ var jsBootstrap = {
         .pipe(browserSync.stream())     //rearga el csss del navegador
         .pipe(notify('SASS compilado')) 
     })
-    /*
-    //Compila y genera un sólo archivo JS
-    gulp.task('js',  function (){
+   
+
+    //compilar y generar un único JS
+    gulp.task('js', function(){
         gulp.src('src/js/main.js')
-      
-        .pipe(tap(function(file) { //tap nos permite ejecutar una funcion por cada fichero relacionado en gulp.src
-            //reemplazamos el contenido del fichero (main.js) por lo que nos devuelve browserify pasandole el fichero
-            file.contents = browserify(file.path, {debug: true}) //creamos una instancia de browserify en base al archivo
-                            .transform('babelify', {presets : ["es2015"]}) //traduce el codigo de ES6 -> ES5
-                            .bundle() //Compilamos  el archivo
-                            .on("error", function(error){
-                                return notify().write(error);
-                            })
+            .pipe(tap(function(file) { 
+                file.contents = browserify(file.path, {debug: true}) //creamos una instancia de browserify en base al archivo
+                                .transform('babelify', {presets : ["es2015"]}) //traduce el codigo de ES6 -> ES5
+                                .bundle() //Compilamos  el archivo
+                                .on("error", function(error){
+                                    return notify().write(error);
+                                })
 
-        }))
-        .pipe(buffer())                 //Se pasa a buffer para que pueda ejecutarse el sigueinte pipe 
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())                 //Se minifica el JS
-        .pipe(sourcemaps.write('./'))   //y los guarda en el mismo directorio que el archivo fuente
-        .pipe(gulp.dest("dist/")) 
-        .pipe(browserSync.stream()) 
-        .pipe(notify("JS compilado"))
-
+            }))
+            .pipe(buffer()) //convertimos a buffer para que funcione el sigueinte pipe
+            .pipe(sourcemaps.init({loadMaps: true})) //captura los source maps del fichero de origen
+            .pipe(uglify()) //Minificamos el JS
+            .pipe(sourcemaps.write('./')) //y los guarda en el mismo directorio que el archivo fuente
+            .pipe(gulp.dest("dist/")) //lo guardamos en la carpeta dist
+            .pipe(browserSync.stream()) //recargamos el navegador
+            .pipe(notify("JS compilado"));
     })
-    */
-
-
-//compilar y generar un único JS
-gulp.task('js', function(){
-    gulp.src('src/js/main.js')
-        .pipe(tap(function(file) { //tap nos permite ejecutar una funcion por cada fichero relacionado en gulp.src
-            //reemplazamos el contenido del fichero (main.js) por lo que nos devuelve browserify pasandole el fichero
-            file.contents = browserify(file.path, {debug: true}) //creamos una instancia de browserify en base al archivo
-                            .transform('babelify', {presets : ["es2015"]}) //traduce el codigo de ES6 -> ES5
-                            .bundle() //Compilamos  el archivo
-                            .on("error", function(error){
-                                return notify().write(error);
-                            })
-
-        }))
-        .pipe(buffer()) //convertimos a buffer para que funcione el sigueinte pipe
-        .pipe(sourcemaps.init({loadMaps: true})) //captura los source maps del fichero de origen
-        .pipe(uglify()) //Minificamos el JS
-        .pipe(sourcemaps.write('./')) //y los guarda en el mismo directorio que el archivo fuente
-        .pipe(gulp.dest("dist/")) //lo guardamos en la carpeta dist
-        .pipe(browserSync.stream()) //recargamos el navegador
-        .pipe(notify("JS compilado"));
-})
 
 
     
-    
-
 
     gulp.task('materialDesign', function(){
         gulp.src(['node_modules/material-design-lite/material.min.css', 'node_modules/material-design-lite/material.min.js'])
@@ -167,16 +137,12 @@ gulp.task('js', function(){
     gulp.task('make-bootstrap-js', function(){
     return gulp.src(bootstrapModule.jsIn)
         .pipe(gulp.dest("dist/bootstrap"))
-        .pipe(notify("JS Boostrap done by bootConfig"))
-        // It will create `bootstrap.js` in directory `assets`. 
-    });
+    })
 
     //images
     gulp.task('images', function(){
         gulp.src(['src/imgs/*.jpg', 'src/imgs/*.jpeg', 'src/imgs/*.png'])
         .pipe(gulp.dest('dist/imgs'))
         .pipe(browserSync.stream())
-        .pipe(notify('imagenes importadas'))
-        
     })
     
