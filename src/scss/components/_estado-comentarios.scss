@@ -1,4 +1,38 @@
 .comentarios-list{
     margin-top: 50px;
-    
+
+    .ui-status{
+        display: none;
+    }
+
+    //añadir '&empty'
+    &.empty{
+        .ui-status.empty{
+            display: block;
+            text-align: left;
+            padding: 50px;
+            font-size: $font-size-large;
+        }
+    }
+
+    &.loading{
+         .ui-status.loading{
+            display: block;
+        }
+    }
+
+     &.error{
+         .ui-status.error{
+            display: block;
+        }
+    }
+
+     &.ideal{
+         .ui-status.loading{
+            display: block;
+        }
+    }
+
+
+
 }
